@@ -7,6 +7,7 @@ public class Palindrome {
 		String result =  String.format("Is '%s' a palindrome? ", originalText);
 		originalText = originalText.replace(" ", "");
 		String reverse = reverseString(originalText);
+		//Show the result
 		System.out.println(result + originalText.equalsIgnoreCase(reverse));
 
 	}
