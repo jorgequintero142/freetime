@@ -1,2 +1,6 @@
 ##Ignore files
 *.class
+target
+*.project
+*.classpath
+*.prefs
