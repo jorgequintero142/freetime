@@ -24,18 +24,18 @@ public class Main {
 	}
 
 	public static void main(String[] args) throws InterruptedException {
-		printCurrentStack("Original..");
+		printCurrentQueue("Original..");
 
 		while (!queue.isEmpty()) {
 			System.out.println("Procesando " + queue.peek() + "...");
 			queue.poll();
 
 			Thread.sleep(1000);
-			printCurrentStack("Actual...");
+			printCurrentQueue("Actual...");
 		}
 	}
 
-	private static void printCurrentStack(String msg) {
+	private static void printCurrentQueue(String msg) {
 		System.out.println(msg + queue.toString());
 	}
 
