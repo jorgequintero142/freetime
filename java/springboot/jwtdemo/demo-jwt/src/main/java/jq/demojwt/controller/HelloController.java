@@ -10,9 +10,14 @@ public class HelloController {
 	public String hello() {
 		return "Hello jwt";
 	}
-	
-	@GetMapping("/api/v1/hola")
-	public String hello2() {
-		return "Hello jwt2";
+
+	@GetMapping("/api/v1/user")
+	public String user() {
+		return "Hello user!";
+	}
+
+	@GetMapping("/api/v1/admin")
+	public String admin() {
+		return "Hello admin!";
 	}
 }
