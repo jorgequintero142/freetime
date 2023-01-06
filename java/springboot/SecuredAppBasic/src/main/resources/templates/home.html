@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
+	rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Spring Boot Secured App Basic</title>
+</head>
+<body>
+	<div class="container">
+		<h1>I like work with Spring Boot Web</h1>
+		<br />
+		<div th:if="${name ==  null}">
+			<a class="btn btn-default" role="button" th:href="@{/login}">Login</a>
+		</div>
+		<div th:if="${name != null}">
+			<h2>
+				<span th:text="'Hello, ' + ${name}"></span>
+			</h2>
+			<a class="btn btn-default" role="button" th:href="@{/human}">List Humans species</a>
+			<a class="btn btn-default" role="button" th:href="@{/logout}">Logout</a>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
+	rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Login</title>
+</head>
+<body>
+	<div class="container">
+		<h1>Login</h1>
+		<form name='f' action="login" method='POST'>
+			<table>
+				<tr>
+					<td>User:</td>
+					<td><input type='text' name='username' value=''></td>
+				</tr>
+				<tr>
+					<td>Password:</td>
+					<td><input type='password' name='password' /></td>
+				</tr>
+				<tr>
+					<td><input name="submit" type="submit" class="btn btn-primary"
+						value="Login" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
