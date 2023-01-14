@@ -20,6 +20,7 @@ describe('Countries', () => {
           res.should.have.status(200);
           Object.keys(res.body).length.should.be.eql(251);
           done();
+          process.exit(0);
         });
     });
   });
