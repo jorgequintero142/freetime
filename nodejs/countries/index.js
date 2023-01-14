@@ -1,14 +1,14 @@
 const express = require('express')
-const cors  = require('cors');
+const cors = require('cors');
 
-const app = express()
+const app = express();
 const port = process.env.PORT || 3000;
 
 
-const countryCodes = require('country-codes-list')
+const countryCodes = require('country-codes-list');
 
 
-const myCountryCodesObject = countryCodes.customList('countryCode', '[{countryCode}] {countryNameEn}: +{countryCallingCode} {officialLanguageCode} {region}')
+const myCountryCodesObject = countryCodes.customList('countryCode', '[{countryCode}] {countryNameEn}: +{countryCallingCode} {officialLanguageCode} {region}');
 
 app.use(cors());
 app.get('/:countryCode', (req, res) => {
@@ -24,8 +24,9 @@ app.get('/', (req, res) => {
     res.send(myCountryCodesObject);
 })
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
 
-module.exports = app;
+module.exports.app =  app;
+module.exports.server =  server;

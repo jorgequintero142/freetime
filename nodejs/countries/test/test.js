@@ -1,27 +1,24 @@
-process.env.NODE_ENV = 'test';
-
-
+//process.env.NODE_ENV = 'test';
+let chaiHttp = require('chai-http');
 let api = require('../index');
 let chai = require('chai');
-let chaiHttp = require('chai-http');
+
 let should = chai.should();
-
-
-
 chai.use(chaiHttp);
 
 describe('Countries', () => {
-
   describe('/GET countries', () => {
     it('it should GET all the countries', (done) => {
-      chai.request(api)
+      chai.request(api.app)
         .get('/')
         .end((err, res) => {
           res.should.have.status(200);
-          Object.keys(res.body).length.should.be.eql(251);
+          Object.keys(res.body).length.should.be.eql(25);
           done();
-          process.exit(0);
         });
+    });
+    after(async () => {
+      api.server.close();
     });
   });
 });
