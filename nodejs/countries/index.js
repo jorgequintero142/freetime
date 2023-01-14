@@ -1,12 +1,16 @@
 const express = require('express')
+const cors  = require('cors');
+
 const app = express()
+const port = 3000
+
 
 const countryCodes = require('country-codes-list')
-const port = 3000
+
 
 const myCountryCodesObject = countryCodes.customList('countryCode', '[{countryCode}] {countryNameEn}: +{countryCallingCode} {officialLanguageCode} {region}')
 
-
+app.use(cors());
 app.get('/:countryCode', (req, res) => {
     var code = req.params["countryCode"];
     if (myCountryCodesObject[code] != undefined) {
@@ -23,3 +27,5 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
+
+module.exports = app;
