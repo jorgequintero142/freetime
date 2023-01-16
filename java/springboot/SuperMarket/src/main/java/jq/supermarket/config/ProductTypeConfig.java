@@ -5,10 +5,12 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Configuration;
 
 import jq.supermarket.product.ProductType;
 import jq.supermarket.product.ProductTypeRepo;
 
+@Configuration 
 public class ProductTypeConfig implements CommandLineRunner {
 
 	@Autowired
