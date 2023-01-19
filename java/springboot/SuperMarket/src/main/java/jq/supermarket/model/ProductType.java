@@ -1,4 +1,4 @@
-package jq.supermarket.product;
+package jq.supermarket.model;
 
 import java.util.Set;
 
@@ -34,6 +34,11 @@ public class ProductType {
 
 	public String getNameProductType() {
 		return nameProductType;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductType [idProductType=" + idProductType + ", nameProductType=" + nameProductType + "]";
 	}
 
 	public void setNameProductType(String nameProductType) {

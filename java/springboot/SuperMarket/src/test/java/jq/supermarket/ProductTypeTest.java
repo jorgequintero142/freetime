@@ -13,8 +13,8 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import jq.supermarket.product.ProductType;
-import jq.supermarket.product.ProductTypeRepo;
+import jq.supermarket.model.ProductType;
+import jq.supermarket.repo.ProductTypeRepo;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)

@@ -1,0 +1,70 @@
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+	rel="stylesheet" />
+<title>Hello Products</title>
+</head>
+<body>
+	<br />
+	<div class="container">
+		<div class="row">
+
+			<div class="col-lg-6">
+				<form th:action="@{/public/searchProducts}" class="form-inline"
+					th:object="${product}" method="post">
+
+					Name: <input type="text" th:field="*{nameProduct}"
+						th:value="*{nameProduct}" /> &nbsp; Product Type: <select
+						th:field="*{productType.idProductType}">
+						<option th:value="''"></option>
+						<option th:each="typeprod : ${typesprod}"
+							th:selected="${typeprod.idProductType == {product.productType.idProductType} }"
+							th:value="${typeprod.idProductType}"
+							th:text="${typeprod.nameProductType}"></option>
+
+					</select><br />
+					<br />
+					<input type="submit" value="Search" class="btn btn-success" />&nbsp;
+					<input type="reset" value="Clear" class="btn btn-secondary" />
+				</form>
+			</div>
+			<div class="col-6">
+				<a class="btn btn-primary" th:if="${isAdmin}"
+					href="/admin/product/create">Create</a> <a class="btn btn-warning"
+					th:if="${!isAdmin}" href="/login">Login</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+
+							<th>Name</th>
+							<th>Price</th>
+							<th>Type</th>
+							<th>&nbsp;</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:if="${products.empty}">
+							<td colspan="4">No Products Available</td>
+						</tr>
+						<tr th:each="prodto : ${products}">
+							
+							<td><span th:text="${prodto.product.nameProduct}">Name </span></td>
+							<td><span th:text="${prodto.product.priceProduct}">Price</span></td>		
+							<td><span th:text="${prodto.typeProduct}">Type</span></td>							
+							<td><span></span><a class="btn btn-outline-warning"
+								th:if="${isAdmin}"
+								th:href="@{/admin/product/edit(id=${prodto.product.idProduct})}">Edit</a></td>
+							
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
