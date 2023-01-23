@@ -1,4 +1,4 @@
-package jq.supermarket.security;
+package jq.supermarket.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

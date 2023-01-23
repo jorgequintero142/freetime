@@ -10,7 +10,9 @@
 		<h1 class="alert alert-light">Info Product</h1>
 		<form th:action="@{/admin/product/create}" th:object="${product}"
 			method="post">
+			<input type="hidden" th:field="*{idProduct}" />
 			<p th:if="${error!=null}" th:text="${error}" />
+			
 			<p>
 				Name: <input type="text" th:field="*{nameProduct}" />
 			</p>
@@ -19,11 +21,10 @@
 			</p>
 
 			<p>
-				Product Type: <select th:field="*{productType.idProductType}">
-					<option th:each="typeprod : ${typesprod}"
-						th:value="${typeprod.idProductType}"
-						th:text="${typeprod.nameProductType}"></option>
-
+				Product Type: <select th:field="*{typeOfProduct.idTypeOfProduct}">
+					<option th:each="typeofproduct : ${typesofproducts}"
+						th:value="${typeofproduct.idTypeOfProduct}"
+						th:text="${typeofproduct.nameTypeOfProduct}" />
 				</select>
 
 			</p>

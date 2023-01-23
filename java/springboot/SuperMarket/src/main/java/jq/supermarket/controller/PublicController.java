@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import jq.supermarket.model.Product;
-import jq.supermarket.model.ProductType;
-import jq.supermarket.service.ProductService;
-import jq.supermarket.service.ProductTypeService;
+import jq.supermarket.typeofproduct.TypeOfProductService;
+import jq.supermarket.product.Product;
+import jq.supermarket.product.ProductService;
+import jq.supermarket.typeofproduct.TypeOfProduct;
 
 @Controller
 @RequestMapping(value = { "", "/", "/public" })
@@ -24,16 +24,16 @@ public class PublicController {
 	private ProductService productService;
 
 	@Autowired
-	private ProductTypeService productTypeService;
+	private TypeOfProductService typeOfProductService;
 
 	@GetMapping(value = { "", "/home", "/index" })
 	public String home(Model model,
 			@CurrentSecurityContext(expression = "authentication") Authentication authentication) {
-		model.addAttribute("products", productService.getInfoAllProducts());
-		model.addAttribute("typesprod", productTypeService.getAll());
-		Product pr = new Product();
-		pr.setProductType(new ProductType());
-		model.addAttribute("product", pr);
+		model.addAttribute("products", productService.getProducts(productService.getAllProducts()));
+		model.addAttribute("typesofproducts", typeOfProductService.getAllTypeOfProducts());
+		Product product = new Product();
+		product.setTypeOfProduct(new TypeOfProduct());
+		model.addAttribute("product", product);
 		if (authentication.isAuthenticated()
 				&& authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
 			model.addAttribute("isAdmin", true);
@@ -44,11 +44,11 @@ public class PublicController {
 	}
 
 	@PostMapping(value = "searchProducts")
-	public String searchProduct(@ModelAttribute Product pr, Model model,
+	public String searchProduct(@ModelAttribute Product product, Model model,
 			@CurrentSecurityContext(expression = "authentication") Authentication authentication) {
-		model.addAttribute("typesprod", productTypeService.getAll());
-		model.addAttribute("products", productService.search(pr));
-		model.addAttribute("product", pr);
+		model.addAttribute("typesofproducts", typeOfProductService.getAllTypeOfProducts());
+		model.addAttribute("products", productService.search(product));
+		model.addAttribute("product", product);
 		if (authentication.isAuthenticated()
 				&& authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
 			model.addAttribute("isAdmin", true);

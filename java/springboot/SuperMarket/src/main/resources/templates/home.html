@@ -16,12 +16,12 @@
 
 					Name: <input type="text" th:field="*{nameProduct}"
 						th:value="*{nameProduct}" /> &nbsp; Product Type: <select
-						th:field="*{productType.idProductType}">
+						th:field="*{typeOfProduct.idTypeOfProduct}">
 						<option th:value="''"></option>
-						<option th:each="typeprod : ${typesprod}"
-							th:selected="${typeprod.idProductType == {product.productType.idProductType} }"
-							th:value="${typeprod.idProductType}"
-							th:text="${typeprod.nameProductType}"></option>
+						<option th:each="typeofproduct : ${typesofproducts}"
+							th:selected="${typeofproduct.idTypeOfProduct == {product.TypeOfProduct.idTypeOfProduct} }"
+							th:value="${typeofproduct.idTypeOfProduct}"
+							th:text="${typeofproduct.nameTypeOfProduct}"></option>
 
 					</select><br />
 					<br />
@@ -51,14 +51,14 @@
 						<tr th:if="${products.empty}">
 							<td colspan="4">No Products Available</td>
 						</tr>
-						<tr th:each="prodto : ${products}">
+						<tr th:each="productdto : ${products}">
 							
-							<td><span th:text="${prodto.product.nameProduct}">Name </span></td>
-							<td><span th:text="${prodto.product.priceProduct}">Price</span></td>		
-							<td><span th:text="${prodto.typeProduct}">Type</span></td>							
+							<td><span th:text="${productdto.product.nameProduct}">Name </span></td>
+							<td><span th:text="${productdto.product.priceProduct}">Price</span></td>		
+							<td><span th:text="${productdto.nameTypeOfProduct}">Type</span></td>							
 							<td><span></span><a class="btn btn-outline-warning"
 								th:if="${isAdmin}"
-								th:href="@{/admin/product/edit(id=${prodto.product.idProduct})}">Edit</a></td>
+								th:href="@{/admin/product/edit(id=${productdto.product.idProduct})}">Edit</a></td>
 							
 						</tr>
 					</tbody>

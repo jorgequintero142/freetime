@@ -15,10 +15,10 @@ public class NavigationSecureConfig {
 	@SuppressWarnings("deprecation")
 	@Bean
 	public InMemoryUserDetailsManager users() {
-		UserDetails admin = User.withDefaultPasswordEncoder().username("admin").password("adm123").roles("ADMIN")
+		UserDetails   userDetails   = User.withDefaultPasswordEncoder().username("admin").password("adm123").roles("ADMIN")
 				.build();
 
-		return new InMemoryUserDetailsManager(admin);
+		return new InMemoryUserDetailsManager(userDetails);
 	}
 
 	@SuppressWarnings("deprecation")
