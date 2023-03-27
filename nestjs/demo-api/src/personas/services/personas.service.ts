@@ -1,3 +1,4 @@
+import { PersonaDto } from './../dtos/persona.dto';
 import { Injectable } from '@nestjs/common';
 import { Persona } from '../entities/persona.entity';
 
@@ -11,7 +12,8 @@ export class PersonasService {
   findAll() {
     return this.personas;
   }
-  create(newPersona: Persona) {
+  create(payload: PersonaDto) {
+    const newPersona = { ...payload };
     this.personas.push(newPersona);
     return newPersona;
   }
